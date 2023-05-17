@@ -28,17 +28,17 @@ console.log(playerSelection);
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         return ('Tie!');
-    } else if (playerSelection = 'ROCK' && computerSelection == 'PAPER') {
+    } else if (playerSelection == 'ROCK' && computerSelection == 'PAPER') {
         return ('You Lose!');
-    } else if (playerSelection = 'SCISSORS' && computerSelection == 'PAPER') {
+    } else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER') {
         return ('You Win!');
-    } else if (playerSelection = 'PAPER' && computerSelection == 'SCISSORS') {
+    } else if (playerSelection == 'PAPER' && computerSelection == 'SCISSORS') {
         return ('You Lose!');
-    } else if (playerSelection = 'ROCK' && computerSelection == 'SCISSORS') {
+    } else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') {
         return ('You Win!');
-    } else if (playerSelection = 'SCISSORS' && computerSelection == 'ROCK') {
+    } else if (playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
         return ('You Lose!');
-    } else if (playerSelection = 'PAPER' && computerSelection == 'ROCK') {
+    } else if (playerSelection == 'PAPER' && computerSelection == 'ROCK') {
         return ('You Win!');
     }
     }
