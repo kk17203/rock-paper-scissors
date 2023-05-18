@@ -50,8 +50,8 @@ function playRound(playerSelection, computerSelection) {
     }
     }
 
-    // display round winner
-    console.log(playRound(playerSelection, computerSelection));
+// display round winner
+console.log(playRound(playerSelection, computerSelection));
 
 // keep track of overall score
 if (playRound(playerSelection, computerSelection) == 'You Win!') {
@@ -64,7 +64,7 @@ if (playRound(playerSelection, computerSelection) == 'You Win!') {
 console.log('Your Score: ' + playerScoreCount);
 console.log('Computer Score: ' + computerScoreCount);
 
-    roundCount++;
+roundCount++;
 }
 
 // display overall winner
