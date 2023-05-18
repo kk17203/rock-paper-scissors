@@ -2,12 +2,11 @@
 //   5/16/23
 //   Created as part of 'The Odin Project' course
 
-let roundCount = 1;
 let playerScoreCount = 0;
 let computerScoreCount = 0;
 
-// loop game 5 rounds
-while (roundCount <= 5) {
+// loop until player or comp gets 5 wins
+for (let i = 0; i = playerScoreCount < 5 && computerScoreCount < 5; i++) {
 
 // randomly choose rock, paper, or scissors
 let compChoice = ['Rock', 'Paper', 'Scissors'];
@@ -63,8 +62,7 @@ if (playRound(playerSelection, computerSelection) == 'You Win!') {
 // display overall score
 console.log('Your Score: ' + playerScoreCount);
 console.log('Computer Score: ' + computerScoreCount);
-
-roundCount++;
+ 
 }
 
 // display overall winner
