@@ -2,6 +2,25 @@
 //   5/16/23
 //   Created as part of 'The Odin Project' course
 
+const container = document.querySelector('#container');
+const roundMsg = document.createElement("div");
+roundMsg.classList.add('roundMsg');
+container.appendChild(roundMsg);
+const roundResult = document.createElement("div");
+roundResult.classList.add('roundResult');
+container.appendChild(roundResult);
+const user = document.createElement('p');
+user.classList.add('user');
+roundResult.appendChild(user);
+const comp = document.createElement('p');
+comp.classList.add('comp');
+roundResult.appendChild(comp);
+
+
+const overAllResult = document.createElement("div");
+overAllResult.classList.add('overAllResult');
+container.appendChild(overAllResult);
+
 let playerScoreCount = 0;
 let computerScoreCount = 0;
 
@@ -11,13 +30,13 @@ btn.forEach(btn =>
     btn.addEventListener('click', function (e) {
         let playerSelection = e.target.innerText;
         let computerSelection = getRandomChoice();
-        console.log('You chose: ' + playerSelection);
-        console.log('Computer chose: ' + computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
+        console.log(computerSelection);
+        user.textContent = 'You chose: ' + playerSelection;
+        comp.textContent =  'Computer chose: ' + computerSelection;
+        roundMsg.textContent = playRound(playerSelection, computerSelection);
         
         
-        console.log('Your Score: ' + playerScoreCount);
-        console.log('Computer Score: ' + computerScoreCount);
+        overAllResult.innerHTML = 'Your Score: ' + playerScoreCount + '<br>Computer Score: ' + computerScoreCount;
 
         if (playerScoreCount === 5 || computerScoreCount === 5) {
             if (playerScoreCount > computerScoreCount) {
@@ -40,25 +59,23 @@ function getRandomChoice() {
 // determine round winner
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
+        user.classList.remove('win');
+        comp.classList.remove('lose');
         return ('Tie!');
-    } else if (playerSelection == 'Rock' && computerSelection == 'Paper') {
-        computerScoreCount++;
-        return ('You Lose! Paper beats rock!');
-    } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
-        playerScoreCount++;
-        return ('You Win! Scissors beat paper!');
-    } else if (playerSelection == 'Paper' && computerSelection == 'Scissors') {
-        computerScoreCount++;
-        return ('You Lose! Scissors beat paper!');
-    } else if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
-        playerScoreCount++;
-        return ('You Win! Rock beats scissors!');
-    } else if (playerSelection == 'Scissors' && computerSelection == 'Rock') {
-        computerScoreCount++;
-        return ('You Lose! Rock beats scissors!');
-    } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
-        playerScoreCount++;
-        return ('You Win! Paper beats Rock!');
-    }
+    } else if ((playerSelection == 'Rock' && computerSelection == 'Paper') || 
+                (playerSelection == 'Paper' && computerSelection == 'Scissors') ||
+                (playerSelection == 'Scissors' && computerSelection == 'Rock')) {
+                computerScoreCount++;
+                user.classList.remove('win');
+                comp.classList.add('lose');
+                return ('You Lose! ' + computerSelection + ' beats ' + playerSelection + '!');
+    } else if ((playerSelection == 'Scissors' && computerSelection == 'Paper') ||
+                (playerSelection == 'Rock' && computerSelection == 'Scissors') || 
+                (playerSelection == 'Paper' && computerSelection == 'Rock')) {
+                playerScoreCount++;
+                comp.classList.remove('lose');
+                user.classList.add('win');
+                return 'You Win! ' + playerSelection + ' beats ' + computerSelection + '!';
+    } 
     }
 
