@@ -17,9 +17,16 @@ let getComputerChoice = compChoice[Math.floor(Math.random() * 3)];
 let computerSelection = getComputerChoice.toUpperCase();
 
 // get user selection
-let getPlayerChoice = prompt('Choose "Rock", "Paper", or "Scissors"', '');
+//let getPlayerChoice = prompt('Choose "Rock", "Paper", or "Scissors"', '');
+//function playerChoice (getPlayerChoice) {
+const btn = document.querySelectorAll('.btn');
+let getPlayerChoice = btn.forEach(btn => btn.addEventListener('click', function(e) {return(e.target.innerText);}));
 
-// console.log(getPlayerChoice);
+
+
+
+
+ console.log(getPlayerChoice);
 
 // convert getPlayerChoice to uppercase (to make case insensitive)
 let playerSelection = getPlayerChoice.toUpperCase();

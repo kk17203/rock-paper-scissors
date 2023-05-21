@@ -1,0 +1,10 @@
+body {
+    min-height: 100vh;
+}
+
+button {
+    text-align: center;
+    font-size: 5em;
+    padding: .25em 1em;
+    width: max-content;
+}
