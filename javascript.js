@@ -5,64 +5,60 @@
 let playerScoreCount = 0;
 let computerScoreCount = 0;
 
-// loop until player or comp gets 5 wins
-for (let i = 0; i = playerScoreCount < 5 && computerScoreCount < 5; i++) {
-
-// randomly choose rock, paper, or scissors
-let compChoice = ['Rock', 'Paper', 'Scissors'];
-
-let computerSelection = compChoice[Math.floor(Math.random() * 3)];
-
-// get user selection
-//let playerSelection = prompt('Choose "Rock", "Paper", or "Scissors"', '');
 const btn = document.querySelectorAll('.btn');
 
 btn.forEach(btn =>
     btn.addEventListener('click', function (e) {
-        console.log(e.target.innerText)
+        let playerSelection = e.target.innerText;
+        let computerSelection = getRandomChoice();
+        console.log('You chose: ' + playerSelection);
+        console.log('Computer chose: ' + computerSelection);
+        console.log(playRound(playerSelection, computerSelection));
+        
+        
+        console.log('Your Score: ' + playerScoreCount);
+        console.log('Computer Score: ' + computerScoreCount);
+
+        if (playerScoreCount === 5 || computerScoreCount === 5) {
+            if (playerScoreCount > computerScoreCount) {
+                alert ('Congratulations! You Won!');
+            } else if (playerScoreCount < computerScoreCount) {
+                alert ('Bummer! You Lost!');
+            } else {
+                alert ("Unbelievable! It's a Tie!");
+            }
+        }
     }));
 
-// function that compares selections and declares winner
+
+// randomly choose rock, paper, or scissors
+function getRandomChoice() {
+    let compChoice = ['Rock', 'Paper', 'Scissors'];
+    return compChoice[Math.floor(Math.random() * 3)];
+}
+
+// determine round winner
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         return ('Tie!');
-    } else if (playerSelection == 'ROCK' && computerSelection == 'PAPER') {
+    } else if (playerSelection == 'Rock' && computerSelection == 'Paper') {
+        computerScoreCount++;
         return ('You Lose! Paper beats rock!');
-    } else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER') {
+    } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
+        playerScoreCount++;
         return ('You Win! Scissors beat paper!');
-    } else if (playerSelection == 'PAPER' && computerSelection == 'SCISSORS') {
+    } else if (playerSelection == 'Paper' && computerSelection == 'Scissors') {
+        computerScoreCount++;
         return ('You Lose! Scissors beat paper!');
-    } else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') {
+    } else if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
+        playerScoreCount++;
         return ('You Win! Rock beats scissors!');
-    } else if (playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
+    } else if (playerSelection == 'Scissors' && computerSelection == 'Rock') {
+        computerScoreCount++;
         return ('You Lose! Rock beats scissors!');
-    } else if (playerSelection == 'PAPER' && computerSelection == 'ROCK') {
+    } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
+        playerScoreCount++;
         return ('You Win! Paper beats Rock!');
     }
     }
-
-// display round winner
-console.log(playRound(playerSelection, computerSelection));
-
-// keep track of overall score
-if (playRound(playerSelection, computerSelection).includes('You Win!')) {
-    playerScoreCount++
-} else if (playRound(playerSelection, computerSelection).includes('You Lose!')) {
-    computerScoreCount++
-}
-
-// display overall score
-console.log('Your Score: ' + playerScoreCount);
-console.log('Computer Score: ' + computerScoreCount);
- 
-}
-
-// display overall winner
-if (playerScoreCount > computerScoreCount) {
-    alert ('Congratulations! You Won!');
-} else if (playerScoreCount < computerScoreCount) {
-    alert ('Bummer! You Lost!');
-} else {
-    alert ("Unbelievable! It's a Tie!");
-}
 
