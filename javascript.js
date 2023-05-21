@@ -11,24 +11,16 @@ for (let i = 0; i = playerScoreCount < 5 && computerScoreCount < 5; i++) {
 // randomly choose rock, paper, or scissors
 let compChoice = ['Rock', 'Paper', 'Scissors'];
 
-let getComputerChoice = compChoice[Math.floor(Math.random() * 3)];
-
-// convert getComputerChoice to uppercase (to make case insensitive)
-let computerSelection = getComputerChoice.toUpperCase();
+let computerSelection = compChoice[Math.floor(Math.random() * 3)];
 
 // get user selection
-//let getPlayerChoice = prompt('Choose "Rock", "Paper", or "Scissors"', '');
+//let playerSelection = prompt('Choose "Rock", "Paper", or "Scissors"', '');
 const btn = document.querySelectorAll('.btn');
 
 btn.forEach(btn =>
     btn.addEventListener('click', function (e) {
         console.log(e.target.innerText)
     }));
-
-// console.log(getPlayerChoice);
-
-// convert getPlayerChoice to uppercase (to make case insensitive)
-let playerSelection = getPlayerChoice.toUpperCase();
 
 // function that compares selections and declares winner
 function playRound(playerSelection, computerSelection) {
