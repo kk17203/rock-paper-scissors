@@ -6,7 +6,7 @@ let playerScoreCount = 0;
 let computerScoreCount = 0;
 
 // loop until player or comp gets 5 wins
-for (let i = 0; i = playerScoreCount < 5 && computerScoreCount < 5; i++) {
+//for (let i = 0; i = playerScoreCount < 5 && computerScoreCount < 5; i++) {
 
 // randomly choose rock, paper, or scissors
 let compChoice = ['Rock', 'Paper', 'Scissors'];
@@ -19,13 +19,14 @@ let getComputerSelection = compChoice[Math.floor(Math.random() * 3)];
 // get user selection
 //let getPlayerChoice = prompt('Choose "Rock", "Paper", or "Scissors"', '');
 //function playerChoice (getPlayerChoice) {
-const btn = document.querySelectorAll('.btn');
-let playerSelection = btn.forEach(btn => btn.addEventListener('click', function(e) {return(e.target.innerText);}));
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', () => {
+    const playerSelection = 'Rock';
+    playRound ();
+    console.log(playerSelection);
+});
 
-
-
-
- console.log(playerSelection);
+ 
 
 // convert getPlayerChoice to uppercase (to make case insensitive)
 //let playerSelection = getPlayerChoice.toUpperCase();
@@ -53,9 +54,9 @@ function playRound(playerSelection, getComputerSelection) {
 console.log(playRound(playerSelection, getComputerSelection));
 
 // keep track of overall score
-if (playRound(playerSelection, computerSelection).includes('You Win!')) {
+if (playRound(playerSelection, getComputerSelection).includes('You Win!')) {
     playerScoreCount++
-} else if (playRound(playerSelection, computerSelection).includes('You Lose!')) {
+} else if (playRound(playerSelection, getComputerSelection).includes('You Lose!')) {
     computerScoreCount++
 }
 
@@ -63,15 +64,15 @@ if (playRound(playerSelection, computerSelection).includes('You Win!')) {
 console.log('Your Score: ' + playerScoreCount);
 console.log('Computer Score: ' + computerScoreCount);
  
-}
+//}
 
 // display overall winner
-if (playerScoreCount > computerScoreCount) {
-    alert ('Congratulations! You Won!');
-} else if (playerScoreCount < computerScoreCount) {
-    alert ('Bummer! You Lost!');
-} else {
-    alert ("Unbelievable! It's a Tie!");
-}
+//if (playerScoreCount > computerScoreCount) {
+//    alert ('Congratulations! You Won!');
+//} else if (playerScoreCount < computerScoreCount) {
+//    alert ('Bummer! You Lost!');
+//} else {
+//    alert ("Unbelievable! It's a Tie!");
+//}
 
 
